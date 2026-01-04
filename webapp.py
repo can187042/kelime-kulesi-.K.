@@ -31,7 +31,7 @@ st.markdown("""
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         text-align: center;
         border: 2px solid #f0f0f0;
-        height: 350px; /* Sabit yükseklik ile hizalama */
+        height: 350px; /* Sabit yükseklik */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -69,7 +69,7 @@ st.markdown("""
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        max-height: 400px; /* Videonun aşırı büyümesini engelle */
+        max-height: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -153,7 +153,7 @@ with st.sidebar:
             st.session_state.kart_acik = False
 
 # =========================================================
-# ANA EKRAN (KOMPAKT)
+# ANA EKRAN
 # =========================================================
 if not st.session_state.aktif_dosya:
     st.title("Kelime Kulesi")
@@ -170,8 +170,8 @@ if tur == "kelime":
         if idx >= len(veri): st.session_state.index = 0
         kelime = veri[st.session_state.index]
 
-        # --- EKRANI İKİYE BÖLÜYORUZ (SOL: KELİME, SAĞ: VİDEO) ---
-        col_sol, col_sag = st.columns([5, 4]) # Sol biraz daha geniş
+        # --- EKRAN DÜZENİ (SOL: KELİME, SAĞ: VİDEO) ---
+        col_sol, col_sag = st.columns([5, 4]) 
 
         with col_sol:
             # 1. KELİME KARTI
@@ -180,14 +180,16 @@ if tur == "kelime":
                 <p class="english-word">{kelime['eng']}</p>
             """
             if st.session_state.kart_acik:
+                # Kart AÇIKSA: Sadece Türkçe anlamı göster (Ses çalma!)
                 html_content += f'<p class="turkish-word">{kelime["tr"]}</p></div>'
-                ses_cal_gtts(kelime['eng'])
             else:
+                # Kart KAPALIYSA: Henüz Türkçe yok, SESİ BURADA ÇAL
                 html_content += '</div>'
+                ses_cal_gtts(kelime['eng']) 
             
             st.markdown(html_content, unsafe_allow_html=True)
             
-            # 2. BUTONLAR (KARTIN ALTINDA)
+            # 2. BUTONLAR
             c1, c2, c3 = st.columns([1, 2, 1])
             with c1:
                 if st.button("⬅️ Geri"):
@@ -205,11 +207,10 @@ if tur == "kelime":
                     st.session_state.kart_acik = False
                     st.rerun()
             
-            # İlerleme Çubuğu
             st.progress((idx + 1) / len(veri))
 
         with col_sag:
-            # 3. VİDEO ALANI (SAĞDA, DAHA KÜÇÜK)
+            # 3. VİDEO ALANI
             st.markdown('<div class="video-container">', unsafe_allow_html=True)
             video_yolu = video_bul(kelime["eng"])
             if video_yolu:
@@ -219,10 +220,11 @@ if tur == "kelime":
             st.markdown('</div>', unsafe_allow_html=True)
 
 else:
-    # Hikaye modu aynen kalabilir
+    # Hikaye Modu
     st.subheader(f"📖 {secilen_dosya}")
     sayfalar = veri.get("sayfalar", [])
     if sayfalar:
-        st.write(sayfalar[0])
+        # Basit hikaye gösterimi (Gerekirse geliştirilebilir)
+        st.write(sayfalar[0]) 
     else:
         st.write("Sayfa yok.")
