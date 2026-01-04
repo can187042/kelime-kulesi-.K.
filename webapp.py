@@ -2,28 +2,25 @@ import streamlit as st
 import json
 import os
 import glob
-import random
 import requests
-import time
 import re
 from gtts import gTTS
-from deep_translator import GoogleTranslator
 import base64
 
-# --- SAYFA AYARLARI (Geniş Düzen) ---
-st.set_page_config(page_title="Kelime Kulesi", page_icon="🏰", layout="wide", initial_sidebar_state="expanded")
+# --- SAYFA AYARLARI (MENÜ AÇIK BAŞLASIN) ---
+st.set_page_config(
+    page_title="Kelime Kulesi", 
+    page_icon="🏰", 
+    layout="wide", 
+    initial_sidebar_state="expanded"  # <-- Bu ayar menüyü açık tutmaya zorlar
+)
 
-# --- CSS İLE TASARIM (KOMPAKT MOD) ---
+# --- CSS TASARIM ---
 st.markdown("""
     <style>
-    /* Sayfanın tepesindeki boşlukları yok et */
-    .block-container {
-        padding-top: 1rem !important;
-        padding-bottom: 0rem !important;
-    }
+    .block-container { padding-top: 1rem !important; padding-bottom: 0rem !important; }
     header {visibility: hidden;}
     
-    /* Kelime Kartı Tasarımı */
     .flashcard {
         background-color: #ffffff;
         padding: 20px;
@@ -31,59 +28,26 @@ st.markdown("""
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         text-align: center;
         border: 2px solid #f0f0f0;
-        height: 350px; /* Sabit yükseklik */
+        height: 350px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .english-word {
-        font-size: 60px !important;
-        font-weight: 800;
-        color: #2c3e50;
-        margin: 0;
-        padding: 0;
-        line-height: 1.2;
-    }
-    .turkish-word {
-        font-size: 40px !important;
-        font-weight: normal;
-        color: #e67e22; /* Turuncu */
-        margin-top: 10px;
-        animation: fadeIn 0.5s;
-    }
+    .english-word { font-size: 60px !important; font-weight: 800; color: #2c3e50; margin: 0; line-height: 1.2; }
+    .turkish-word { font-size: 40px !important; font-weight: normal; color: #e67e22; margin-top: 10px; animation: fadeIn 0.5s; }
     
-    /* Buton Tasarımları */
-    .stButton>button {
-        width: 100%;
-        border-radius: 10px;
-        height: 50px;
-        font-size: 16px;
-        font-weight: bold;
-        transition: all 0.3s;
-        margin-top: 10px;
-    }
+    .stButton>button { width: 100%; border-radius: 10px; height: 50px; font-size: 16px; font-weight: bold; margin-top: 10px; }
     
-    /* Video Alanı */
     .video-container {
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        max-height: 400px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #000;
+        border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        max-height: 400px; display: flex; justify-content: center; align-items: center; background-color: #000;
     }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
     """, unsafe_allow_html=True)
 
-# --- SABİTLER ---
+# --- AYARLAR ---
 KLASOR = "kelime_kutusu"
 VIDEO_KLASOR = "kelime_kutusu/videolar"
 PEXELS_API_KEY = "coY2VaGe3OeYlTWs4AL0fWITB1RNk1k25jH2HFJoJ9dDtkqzg00tol5x"
@@ -99,11 +63,7 @@ def ses_cal_gtts(metin):
         with open("temp_audio.mp3", "rb") as f:
             data = f.read()
         b64 = base64.b64encode(data).decode()
-        md = f"""
-            <audio autoplay="true">
-            <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
-            </audio>
-            """
+        md = f"""<audio autoplay="true"><source src="data:audio/mp3;base64,{b64}" type="audio/mp3"></audio>"""
         st.markdown(md, unsafe_allow_html=True)
     except: pass
 
@@ -138,25 +98,28 @@ if 'kart_acik' not in st.session_state: st.session_state.kart_acik = False
 if 'aktif_dosya' not in st.session_state: st.session_state.aktif_dosya = ""
 
 # =========================================================
-# SOL MENÜ
+# SOL MENÜ (SIDEBAR) - BURASI ÖNEMLİ
 # =========================================================
 with st.sidebar:
-    st.header("📂 Dosya Seç")
+    st.title("📂 Dosyalar")
     dosyalar = dosya_listesi()
     if not dosyalar:
-        st.warning("Dosya bulunamadı.")
+        st.error("Dosya yok!")
     else:
-        secilen_dosya = st.selectbox("Dosyalar:", dosyalar)
+        secilen_dosya = st.selectbox("Seçiniz:", dosyalar)
         if secilen_dosya != st.session_state.aktif_dosya:
             st.session_state.aktif_dosya = secilen_dosya
             st.session_state.index = 0
             st.session_state.kart_acik = False
+    
+    st.divider()
+    st.info("Menüyü kapatmak için sol üstteki çarpıya basabilirsin.")
 
 # =========================================================
 # ANA EKRAN
 # =========================================================
 if not st.session_state.aktif_dosya:
-    st.title("Kelime Kulesi")
+    st.title("👈 Lütfen Soldan Dosya Seçin")
     st.stop()
 
 veri = dosya_oku(st.session_state.aktif_dosya)
@@ -164,28 +127,24 @@ tur = "hikaye" if isinstance(veri, dict) else "kelime"
 
 if tur == "kelime":
     if not veri:
-        st.warning("Dosya boş.")
+        st.warning("Bu dosya boş.")
     else:
         idx = st.session_state.index
         if idx >= len(veri): st.session_state.index = 0
         kelime = veri[st.session_state.index]
 
-        # --- EKRAN DÜZENİ (SOL: KELİME, SAĞ: VİDEO) ---
+        # --- EKRAN DÜZENİ ---
         col_sol, col_sag = st.columns([5, 4]) 
 
         with col_sol:
             # 1. KELİME KARTI
-            html_content = f"""
-            <div class="flashcard">
-                <p class="english-word">{kelime['eng']}</p>
-            """
+            html_content = f"""<div class="flashcard"><p class="english-word">{kelime['eng']}</p>"""
+            
             if st.session_state.kart_acik:
-                # Kart AÇIKSA: Sadece Türkçe anlamı göster (Ses çalma!)
                 html_content += f'<p class="turkish-word">{kelime["tr"]}</p></div>'
             else:
-                # Kart KAPALIYSA: Henüz Türkçe yok, SESİ BURADA ÇAL
                 html_content += '</div>'
-                ses_cal_gtts(kelime['eng']) 
+                ses_cal_gtts(kelime['eng']) # SES: KART KAPALIYKEN (İLK AÇILIŞTA) ÇALAR
             
             st.markdown(html_content, unsafe_allow_html=True)
             
@@ -220,11 +179,9 @@ if tur == "kelime":
             st.markdown('</div>', unsafe_allow_html=True)
 
 else:
-    # Hikaye Modu
     st.subheader(f"📖 {secilen_dosya}")
     sayfalar = veri.get("sayfalar", [])
     if sayfalar:
-        # Basit hikaye gösterimi (Gerekirse geliştirilebilir)
-        st.write(sayfalar[0]) 
+        st.write(sayfalar[0])
     else:
         st.write("Sayfa yok.")
