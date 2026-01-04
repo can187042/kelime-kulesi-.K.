@@ -1,0 +1,82 @@
+[
+    {
+        "eng": "School",
+        "tr": "Okul"
+    },
+    {
+        "eng": "Teacher",
+        "tr": "\u00d6\u011fretmen"
+    },
+    {
+        "eng": "Student",
+        "tr": "\u00d6\u011frenci"
+    },
+    {
+        "eng": "Happy",
+        "tr": "Mutlu"
+    },
+    {
+        "eng": "Sad",
+        "tr": "\u00dczg\u00fcn"
+    },
+    {
+        "eng": "Sun",
+        "tr": "G\u00fcne\u015f"
+    },
+    {
+        "eng": "Moon",
+        "tr": "Ay"
+    },
+    {
+        "eng": "Love",
+        "tr": "Sevmek"
+    },
+    {
+        "eng": "Run",
+        "tr": "Ko\u015fmak"
+    },
+    {
+        "eng": "Walk",
+        "tr": "Y\u00fcr\u00fcmek"
+    },
+    {
+        "eng": "Table",
+        "tr": "Masa"
+    },
+    {
+        "eng": "Chair",
+        "tr": "Sandalye"
+    },
+    {
+        "eng": "Pen",
+        "tr": "T\u00fckenmez Kalem"
+    },
+    {
+        "eng": "Pencil",
+        "tr": "Kur\u015fun Kalem"
+    },
+    {
+        "eng": "Bag",
+        "tr": "\u00c7anta"
+    },
+    {
+        "eng": "Door",
+        "tr": "Kap\u0131"
+    },
+    {
+        "eng": "Window",
+        "tr": "Pencere"
+    },
+    {
+        "eng": "Room",
+        "tr": "Oda"
+    },
+    {
+        "eng": "Bed",
+        "tr": "Yatak"
+    },
+    {
+        "eng": "Computer",
+        "tr": "Bilgisayar"
+    }
+]

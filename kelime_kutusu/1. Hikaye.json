@@ -1,0 +1,35 @@
+{
+    "tip": "hikaye",
+    "sayfalar": [
+        "My Day at Home\n\nHello! My name is Ali. Today, I am in my house. My mother and father are in the garden.\n\nMy friend wants to come to my home. We sit in the kitchen. We eat a red apple and we drink cold water.\n\nI have a big dog and a small cat. The cat likes to sleep on the sofa.\n\nI read a blue book. Then, we go to the park in my car."
+    ],
+    "sozluk": {
+        "likes": "beğeniler",
+        "on": "Açık",
+        "sit": "oturmak",
+        "kitchen": "mutfak",
+        "cold": "soğuk",
+        "am": "ben",
+        "is": "öyle",
+        "are": "öyle",
+        "we": "Biz",
+        "and": "Ve",
+        "then": "Daha sonra",
+        "the": "the",
+        "wants": "istiyor",
+        "at": "en",
+        "in": "içinde",
+        "read": "Okumak",
+        "my": "Benim",
+        "home": "Ev",
+        "name": "isim",
+        "sofa": "divan",
+        "day": "gün",
+        "park": "park",
+        "ali": "Ali",
+        "have": "sahip olmak",
+        "today": "Bugün",
+        "garden": "bahçe",
+        "to": "ile"
+    }
+}

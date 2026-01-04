@@ -1,0 +1,42 @@
+[
+    {
+        "eng": "Open",
+        "tr": "A\u00e7mak / A\u00e7\u0131k"
+    },
+    {
+        "eng": "Close",
+        "tr": "Kapatmak / Kapal\u0131"
+    },
+    {
+        "eng": "See",
+        "tr": "G\u00f6rmek"
+    },
+    {
+        "eng": "Look",
+        "tr": "Bakmak"
+    },
+    {
+        "eng": "Hear",
+        "tr": "Duymak"
+    },
+    {
+        "eng": "Listen",
+        "tr": "Dinlemek"
+    },
+    {
+        "eng": "Speak",
+        "tr": "Konu\u015fmak"
+    },
+    {
+        "eng": "Say",
+        "tr": "S\u00f6ylemek"
+    },
+    {
+        "eng": "Ask",
+        "tr": "Sormak"
+    },
+    {
+        "eng": "Answer",
+        "tr": "Cevap vermek"
+    }
+]

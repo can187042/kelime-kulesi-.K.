@@ -1,0 +1,41 @@
+{
+    "tip": "hikaye",
+    "sayfalar": [
+        "The Market Day\n\nI Make toys at home. I Use wood and paint.\n\nI go to the market to Sell the toys. Many children come.\n\nA girl wants a toy. She Buys a small car. She Pays ten liras.\n\nI Give the car to her. She Takes it and smiles.\n\nOh no! I Lose my pen. I cannot write.\n\nMy friend is here. He Helps me look.\n\nWe Find the pen under the table."
+    ],
+    "sozluk": {
+        "she": "o",
+        "toy": "oyuncak",
+        "toys": "oyuncaklar",
+        "takes": "almak",
+        "cannot": "yapamamak",
+        "me": "Ben",
+        "ten": "on",
+        "he": "O",
+        "is": "öyle",
+        "pays": "öder",
+        "buys": "satın alır",
+        "here": "Burada",
+        "children": "çocuklar",
+        "smiles": "gülümsüyor",
+        "we": "Biz",
+        "oh": "ah",
+        "and": "Ve",
+        "paint": "boyamak",
+        "the": "the",
+        "many": "birçok",
+        "write": "yazmak",
+        "wants": "istiyor",
+        "at": "en",
+        "under": "altında",
+        "her": "o",
+        "my": "Benim",
+        "wood": "odun",
+        "home": "Ev",
+        "it": "BT",
+        "no": "HAYIR",
+        "helps": "yardımcı olur",
+        "liras": "liret",
+        "to": "ile"
+    }
+}

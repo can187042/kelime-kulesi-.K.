@@ -1,0 +1,74 @@
+[
+    {
+        "eng": "Man",
+        "tr": "Adam"
+    },
+    {
+        "eng": "Woman",
+        "tr": "Kad\u0131n"
+    },
+    {
+        "eng": "Child",
+        "tr": "\u00c7ocuk"
+    },
+    {
+        "eng": "Boy",
+        "tr": "Erkek \u00e7ocuk"
+    },
+    {
+        "eng": "Girl",
+        "tr": "K\u0131z \u00e7ocuk"
+    },
+    {
+        "eng": "Family",
+        "tr": "Aile"
+    },
+    {
+        "eng": "People",
+        "tr": "\u0130nsanlar"
+    },
+    {
+        "eng": "Day",
+        "tr": "G\u00fcn"
+    },
+    {
+        "eng": "Night",
+        "tr": "Gece"
+    },
+    {
+        "eng": "Morning",
+        "tr": "Sabah"
+    },
+    {
+        "eng": "Evening",
+        "tr": "Ak\u015fam"
+    },
+    {
+        "eng": "Today",
+        "tr": "Bug\u00fcn"
+    },
+    {
+        "eng": "Tomorrow",
+        "tr": "Yar\u0131n"
+    },
+    {
+        "eng": "Yesterday",
+        "tr": "D\u00fcn"
+    },
+    {
+        "eng": "Time",
+        "tr": "Zaman"
+    },
+    {
+        "eng": "Year",
+        "tr": "Y\u0131l"
+    },
+    {
+        "eng": "Week",
+        "tr": "Hafta"
+    },
+    {
+        "eng": "Month",
+        "tr": "Ay"
+    }
+]

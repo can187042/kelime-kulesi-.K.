@@ -1,0 +1,38 @@
+[
+    {
+        "eng": "Street",
+        "tr": "Sokak"
+    },
+    {
+        "eng": "City",
+        "tr": "\u015eehir"
+    },
+    {
+        "eng": "Country",
+        "tr": "\u00dclke"
+    },
+    {
+        "eng": "Shop",
+        "tr": "Ma\u011faza"
+    },
+    {
+        "eng": "Market",
+        "tr": "Market"
+    },
+    {
+        "eng": "Hospital",
+        "tr": "Hastane"
+    },
+    {
+        "eng": "Police",
+        "tr": "Polis"
+    },
+    {
+        "eng": "Bank",
+        "tr": "Banka"
+    },
+    {
+        "eng": "Park",
+        "tr": "Park"
+    }
+]

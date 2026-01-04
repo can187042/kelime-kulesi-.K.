@@ -1,0 +1,30 @@
+{
+    "tip": "hikaye",
+    "sayfalar": [
+        "My Day\n\nI am a student. I am in my room. There is a bed, a table, and a chair. My computer is on the table.\n\nI take my bag. I have a pen and a pencil. I open the door. The sun is hot. I walk to school.\n\nI see my teacher. I love my class. I am very happy.\n\nIn the evening, I run home. I look out the window. I see the moon. I am not sad. I go to sleep."
+    ],
+    "sozluk": {
+        "on": "Açık",
+        "hot": "sıcak",
+        "take": "almak",
+        "am": "ben",
+        "is": "öyle",
+        "and": "Ve",
+        "the": "the",
+        "open": "açık",
+        "in": "içinde",
+        "look": "Bakmak",
+        "my": "Benim",
+        "home": "Ev",
+        "not": "Olumsuz",
+        "very": "çok",
+        "evening": "akşam",
+        "there": "Orası",
+        "day": "gün",
+        "class": "sınıf",
+        "see": "Görmek",
+        "have": "sahip olmak",
+        "to": "ile",
+        "out": "dışarı"
+    }
+}

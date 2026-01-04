@@ -1,0 +1,42 @@
+[
+    {
+        "eng": "Good",
+        "tr": "\u0130yi"
+    },
+    {
+        "eng": "Bad",
+        "tr": "K\u00f6t\u00fc"
+    },
+    {
+        "eng": "Easy",
+        "tr": "Kolay"
+    },
+    {
+        "eng": "Hard",
+        "tr": "Zor"
+    },
+    {
+        "eng": "Fast",
+        "tr": "H\u0131zl\u0131"
+    },
+    {
+        "eng": "Slow",
+        "tr": "Yava\u015f"
+    },
+    {
+        "eng": "New",
+        "tr": "Yeni"
+    },
+    {
+        "eng": "Old",
+        "tr": "Eski"
+    },
+    {
+        "eng": "Clean",
+        "tr": "Temiz"
+    },
+    {
+        "eng": "Dirty",
+        "tr": "Kirli"
+    }
+]

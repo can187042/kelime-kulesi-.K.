@@ -1,0 +1,58 @@
+[
+    {
+        "eng": "Food",
+        "tr": "Yiyecek"
+    },
+    {
+        "eng": "Bread",
+        "tr": "Ekmek"
+    },
+    {
+        "eng": "Milk",
+        "tr": "S\u00fct"
+    },
+    {
+        "eng": "Tea",
+        "tr": "\u00c7ay"
+    },
+    {
+        "eng": "Coffee",
+        "tr": "Kahve"
+    },
+    {
+        "eng": "Rice",
+        "tr": "Pirin\u00e7"
+    },
+    {
+        "eng": "Meat",
+        "tr": "Et"
+    },
+    {
+        "eng": "Fish",
+        "tr": "Bal\u0131k"
+    },
+    {
+        "eng": "Egg",
+        "tr": "Yumurta"
+    },
+    {
+        "eng": "Sugar",
+        "tr": "\u015eeker"
+    },
+    {
+        "eng": "Salt",
+        "tr": "Tuz"
+    },
+    {
+        "eng": "Sweet",
+        "tr": "Tatl\u0131"
+    },
+    {
+        "eng": "Hot",
+        "tr": "S\u0131cak"
+    },
+    {
+        "eng": "Cold",
+        "tr": "So\u011fuk"
+    }
+]
