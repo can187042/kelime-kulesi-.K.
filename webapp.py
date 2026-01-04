@@ -7,20 +7,24 @@ import re
 from gtts import gTTS
 import base64
 
-# --- SAYFA AYARLARI (MENÜ AÇIK BAŞLASIN) ---
+# --- SAYFA AYARLARI ---
 st.set_page_config(
     page_title="Kelime Kulesi", 
     page_icon="🏰", 
     layout="wide", 
-    initial_sidebar_state="expanded"  # <-- Bu ayar menüyü açık tutmaya zorlar
+    initial_sidebar_state="expanded" 
 )
 
 # --- CSS TASARIM ---
 st.markdown("""
     <style>
-    .block-container { padding-top: 1rem !important; padding-bottom: 0rem !important; }
-    header {visibility: hidden;}
+    /* Üst boşluğu azalttık ama Header'ı gizlemedik, yoksa menü tuşu kaybolur */
+    .block-container {
+        padding-top: 1rem !important;
+        padding-bottom: 0rem !important;
+    }
     
+    /* Kelime Kartı Tasarımı */
     .flashcard {
         background-color: #ffffff;
         padding: 20px;
@@ -34,16 +38,49 @@ st.markdown("""
         justify-content: center;
         align-items: center;
     }
-    .english-word { font-size: 60px !important; font-weight: 800; color: #2c3e50; margin: 0; line-height: 1.2; }
-    .turkish-word { font-size: 40px !important; font-weight: normal; color: #e67e22; margin-top: 10px; animation: fadeIn 0.5s; }
-    
-    .stButton>button { width: 100%; border-radius: 10px; height: 50px; font-size: 16px; font-weight: bold; margin-top: 10px; }
-    
-    .video-container {
-        border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        max-height: 400px; display: flex; justify-content: center; align-items: center; background-color: #000;
+    .english-word {
+        font-size: 60px !important;
+        font-weight: 800;
+        color: #2c3e50;
+        margin: 0;
+        padding: 0;
+        line-height: 1.2;
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .turkish-word {
+        font-size: 40px !important;
+        font-weight: normal;
+        color: #e67e22; /* Turuncu */
+        margin-top: 10px;
+        animation: fadeIn 0.5s;
+    }
+    
+    /* Buton Tasarımları */
+    .stButton>button {
+        width: 100%;
+        border-radius: 10px;
+        height: 50px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: all 0.3s;
+        margin-top: 10px;
+    }
+    
+    /* Video Alanı */
+    .video-container {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        max-height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -98,28 +135,26 @@ if 'kart_acik' not in st.session_state: st.session_state.kart_acik = False
 if 'aktif_dosya' not in st.session_state: st.session_state.aktif_dosya = ""
 
 # =========================================================
-# SOL MENÜ (SIDEBAR) - BURASI ÖNEMLİ
+# SOL MENÜ (SIDEBAR)
 # =========================================================
 with st.sidebar:
-    st.title("📂 Dosyalar")
+    st.header("📂 Dosya Seçimi")
     dosyalar = dosya_listesi()
     if not dosyalar:
-        st.error("Dosya yok!")
+        st.error("Dosya bulunamadı.")
     else:
-        secilen_dosya = st.selectbox("Seçiniz:", dosyalar)
+        secilen_dosya = st.selectbox("Çalışılacak Dosya:", dosyalar)
         if secilen_dosya != st.session_state.aktif_dosya:
             st.session_state.aktif_dosya = secilen_dosya
             st.session_state.index = 0
             st.session_state.kart_acik = False
-    
-    st.divider()
-    st.info("Menüyü kapatmak için sol üstteki çarpıya basabilirsin.")
 
 # =========================================================
 # ANA EKRAN
 # =========================================================
 if not st.session_state.aktif_dosya:
-    st.title("👈 Lütfen Soldan Dosya Seçin")
+    st.title("Kelime Kulesi")
+    st.info("👈 Lütfen sol taraftaki menüden bir dosya seçin.")
     st.stop()
 
 veri = dosya_oku(st.session_state.aktif_dosya)
@@ -144,7 +179,7 @@ if tur == "kelime":
                 html_content += f'<p class="turkish-word">{kelime["tr"]}</p></div>'
             else:
                 html_content += '</div>'
-                ses_cal_gtts(kelime['eng']) # SES: KART KAPALIYKEN (İLK AÇILIŞTA) ÇALAR
+                ses_cal_gtts(kelime['eng']) # SES: Kart ilk açıldığında
             
             st.markdown(html_content, unsafe_allow_html=True)
             
